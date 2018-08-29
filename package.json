@@ -1,0 +1,23 @@
+{
+  "name": "dhelmgfeedclient",
+  "version": "1.0.0",
+  "description": "This is a java client for websocket APIs provided by Global Financial Datafeeds LLP",
+  "main": "./lib/",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Pallav Nandi Chaudhuri",
+  "license": "APACHE2.0",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.3",
+    "papaparse": "^4.3.6",
+    "ws": "^1.1.1"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.4.0",
+    "minami": "^1.1.1"
+  }
+}

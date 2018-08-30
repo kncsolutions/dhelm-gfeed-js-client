@@ -24,6 +24,7 @@ function onconnected(isauthenticated){
     wsclient.getInstrumentTypes({
       exchange: "NFO",
       },show_instrument_types);
+      wsclient.getExchanges(showexchanges);
   }
 }
 //example callback function for getExchanges

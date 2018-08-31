@@ -24,9 +24,22 @@ function onconnected(isauthenticated){
     wsclient.getInstrumentTypes({
       exchange: "NFO",
       },show_instrument_types);
-      wsclient.getExchanges(showexchanges);
+    wsclient.getProducts({
+      exchange: "NFO",
+    },show_products);
+    wsclient.getProducts({
+      exchange: "NFO",
+      instrument_type:"FUTIDX"
+    },show_products);
   }
+  wsclient.getExpiryDates({
+    exchange: "NFO",
+    instrument_type:"FUTIDX",
+    product: "BANKNIFTY"
+  },show_expirydates);
+  wsclient.getExchanges(showexchanges);
 }
+
 //example callback function for getExchanges
 function showexchanges(response){
    console.log("*****LIST OF EXCHANGES*****");
@@ -34,6 +47,14 @@ function showexchanges(response){
 }
 //example callback function for getInstrumentTypes
 function show_instrument_types(response){
+  console.log(response);
+}
+//example callback function for getProduct
+function show_products(response){
+  console.log(response);
+}
+//example callback function for getProduct
+function show_expirydates(response){
   console.log(response);
 }
 //wsclient.disconnect();

@@ -27,17 +27,45 @@ function onconnected(isauthenticated){
     wsclient.getProducts({
       exchange: "NFO",
     },show_products);
-    wsclient.getProducts({
+    setTimeout(function(){
+      wsclient.getProducts({
+        exchange: "NFO",
+        instrument_type:"FUTIDX"
+      },show_products);
+    },1000);
+    
+    wsclient.getExpiryDates({
       exchange: "NFO",
-      instrument_type:"FUTIDX"
-    },show_products);
+      instrument_type:"FUTIDX",
+      product: "BANKNIFTY"
+    },show_expirydates);
+    wsclient.getOptionTypes({
+      exchange: "NFO",
+      instrument_type:"FUTIDX",
+      product: "BANKNIFTY",
+      expiry:"25OCT2018"
+    },show_option_types);
+    wsclient.getStrikePrices({
+      exchange: "NFO",
+      instrument_type:"FUTIDX",
+      product: "BANKNIFTY",
+      expiry:"27SEP2018",
+      optiontype:"FF"
+    },show_strike_prices);
+   /* setTimeout(function(){
+    wsclient.getStrikePrices({
+      exchange: "NFO",
+      instrument_type:"FUTIDX",
+      product: "BANKNIFTY",
+      expiry:"27SEP2018",
+      optiontype:"FF"
+    },show_strike_prices)},3000);*/
+  
+    setTimeout(function(){
+      wsclient.getExchanges(showexchanges);
+    },1000);
   }
-  wsclient.getExpiryDates({
-    exchange: "NFO",
-    instrument_type:"FUTIDX",
-    product: "BANKNIFTY"
-  },show_expirydates);
-  wsclient.getExchanges(showexchanges);
+  
 }
 
 //example callback function for getExchanges
@@ -55,6 +83,15 @@ function show_products(response){
 }
 //example callback function for getProduct
 function show_expirydates(response){
+  console.log(response);
+}
+//example callback function for getProduct
+function show_option_types(response){
+  console.log(response);
+}
+//
+function show_strike_prices(response){
+  console.log("*****LIST OF STRIKE PRICES*****");
   console.log(response);
 }
 //wsclient.disconnect();

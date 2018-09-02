@@ -1,4 +1,5 @@
 var DhelmGfeed = require("./lib/index").DhelmGfeed;
+var CONSTANTS = require("./lib/index").CONSTANTS;
 var wsclient = new DhelmGfeed({
 	api_key: "f31b6d7d-0138-428d-93ef-28acbd9632d2",
 	ws_url: "ws://nimblestream.lisuns.com:4526/"
@@ -52,6 +53,30 @@ function onconnected(isauthenticated){
       expiry:"27SEP2018",
       optiontype:"FF"
     },show_strike_prices);
+    wsclient.getLimitation(show_limitation);
+    wsclient.getServerInfo(show_server_info);
+    wsclient.getMarketMessage({
+      exchange: "NFO"
+    },show_market_message);
+    wsclient.getExchangeMessage({
+      exchange: "NFO"
+    },show_exchange_message);
+    wsclient.subscribeRealTime({
+      exchange: "NSE",
+      instrument_identifier:"SBIN"
+    },show_realtime_result);
+    wsclient.subscribeRealTimeSnapshot({
+      exchange: "NSE",
+      instrument_identifier:"SBIN",
+      periodicity:CONSTANTS.MINUTE
+    },show_realtime_snapshot_result);
+    wsclient.getInstrumentsOnSearch({
+      exchange: "NSE",
+      search_word:"SBIN"
+    },show_instruments_on_search);
+    wsclient.getInstruments({
+      exchange: "NSE"
+    },show_instruments);
    /* setTimeout(function(){
     wsclient.getStrikePrices({
       exchange: "NFO",
@@ -70,28 +95,72 @@ function onconnected(isauthenticated){
 
 //example callback function for getExchanges
 function showexchanges(response){
-   console.log("*****LIST OF EXCHANGES*****");
+   console.log("\n\n*****LIST OF EXCHANGES*****\n\n");
+   console.log(response);
+}
+//
+function show_instruments_on_search(response){
+  console.log("\n\n*****LIST OF INSTRUMENTS ON SEARCH*****\n\n");
+   console.log(response);
+}
+//
+function show_instruments(response){
+  console.log("\n\n*****LIST OF INSTRUMENTS ON SEARCH*****\n\n");
    console.log(response);
 }
 //example callback function for getInstrumentTypes
 function show_instrument_types(response){
+  console.log("\n\n*****INSTRUMENT TYPES*****\n\n");
   console.log(response);
 }
 //example callback function for getProduct
 function show_products(response){
+  console.log("\n\n*****PRODUCTS*****\n\n");
   console.log(response);
 }
 //example callback function for getProduct
 function show_expirydates(response){
+  console.log("\n\n*****EXPIRY DATES*****\n\n");
   console.log(response);
 }
 //example callback function for getProduct
 function show_option_types(response){
+  console.log("\n\n*****OPTION TYPES*****\n\n");
   console.log(response);
 }
 //
 function show_strike_prices(response){
-  console.log("*****LIST OF STRIKE PRICES*****");
+  console.log("\n\n*****LIST OF STRIKE PRICES*****\n\n");
+  console.log(response);
+}
+//
+function show_limitation(response){
+  console.log("\n\n*****LIMITATIONS*****\n\n");
+  console.log(response);
+}
+//
+function show_server_info(response){
+  console.log("\n\n*****SERVER INFO*****\n\n");
+  console.log(response);
+}
+//
+function show_market_message(response){
+  console.log("\n\n*****MARKET MESSAGE*****\n\n");
+  console.log(response);
+}
+//
+function show_exchange_message(response){
+  console.log("\n\n*****EXCHANGE MESSAGE*****\n\n");
+  console.log(response);
+}
+//
+function show_realtime_result(response){
+  console.log("\n\n*****REALTIME RESULT*****\n\n");
+  console.log(response);
+}
+//
+function show_realtime_snapshot_result(response){
+  console.log("\n\n*****REALTIME SNAPSHOT RESULT*****\n\n");
   console.log(response);
 }
 //wsclient.disconnect();

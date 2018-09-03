@@ -1,5 +1,6 @@
 var DhelmGfeed = require("./lib/index").DhelmGfeed;
 var CONSTANTS = require("./lib/index").CONSTANTS;
+//console.log(((new Date("2012-06-08")).getTime())/1000);
 var wsclient = new DhelmGfeed({
 	api_key: "f31b6d7d-0138-428d-93ef-28acbd9632d2",
 	ws_url: "ws://nimblestream.lisuns.com:4526/"
@@ -74,9 +75,29 @@ function onconnected(isauthenticated){
       exchange: "NSE",
       search_word:"SBIN"
     },show_instruments_on_search);
-    wsclient.getInstruments({
+    /*wsclient.getInstruments({
       exchange: "NSE"
-    },show_instruments);
+    },show_instruments);*/
+    wsclient.getLastQuote({
+      exchange: "NSE",
+      instrument_identifier:"SBIN"
+    },show_last_quote);
+    wsclient.getLastQuoteArray({
+      exchange: "NSE",
+      instrument_identifiers:["SBIN","INFY","BEPL"],
+    },show_last_quote_array);
+    wsclient.getSnapshot({
+      exchange: "NSE",
+      instrument_identifiers:["SBIN","INFY","BEPL"],
+      periodicity: CONSTANTS.HOUR,
+      period:1
+    },show_snapshot_quote);
+    wsclient.getHistoricalTick({
+      exchange: "NSE",
+      instrument_identifier:"SBIN",
+      from:Math.round(((new Date("2018-08-08").getTime())/1000)),
+      to: Math.round(Date.now()/1000)
+    },show_historical_tick);
    /* setTimeout(function(){
     wsclient.getStrikePrices({
       exchange: "NFO",
@@ -106,6 +127,26 @@ function show_instruments_on_search(response){
 //
 function show_instruments(response){
   console.log("\n\n*****LIST OF INSTRUMENTS ON SEARCH*****\n\n");
+   console.log(response);
+}
+//
+function show_last_quote(response){
+  console.log("\n\n*****LAST QUOTE*****\n\n");
+   console.log(response);
+}
+//
+function show_last_quote_array(response){
+  console.log("\n\n*****LAST QUOTE ARRAY*****\n\n");
+   console.log(response);
+}
+//
+function show_snapshot_quote(response){
+  console.log("\n\n*****SNAPSHOT QUOTE ARRAY*****\n\n");
+   console.log(response);
+}
+//
+function show_historical_tick(response){
+  console.log("\n\n*****HISTORICAL TICK*****\n\n");
    console.log(response);
 }
 //example callback function for getInstrumentTypes

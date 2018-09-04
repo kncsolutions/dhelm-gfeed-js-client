@@ -75,9 +75,9 @@ function onconnected(isauthenticated){
       exchange: "NSE",
       search_word:"SBIN"
     },show_instruments_on_search);
-    /*wsclient.getInstruments({
+    wsclient.getInstruments({
       exchange: "NSE"
-    },show_instruments);*/
+    },show_instruments);
     wsclient.getLastQuote({
       exchange: "NSE",
       instrument_identifier:"SBIN"
@@ -98,6 +98,13 @@ function onconnected(isauthenticated){
       from:Math.round(((new Date("2018-08-08").getTime())/1000)),
       to: Math.round(Date.now()/1000)
     },show_historical_tick);
+    wsclient.getHistoricalOHLC({
+      exchange: "NSE",
+      instrument_identifier:"SBIN",
+      periodicity:CONSTANTS.DAY,
+      from:Math.round(((new Date("2018-08-08").getTime())/1000)),
+      to: Math.round(Date.now()/1000)
+    },show_historical_ohlc);
    /* setTimeout(function(){
     wsclient.getStrikePrices({
       exchange: "NFO",
@@ -147,6 +154,11 @@ function show_snapshot_quote(response){
 //
 function show_historical_tick(response){
   console.log("\n\n*****HISTORICAL TICK*****\n\n");
+   console.log(response);
+}
+//
+function show_historical_ohlc(response){
+  console.log("\n\n*****HISTORICAL OHLC*****\n\n");
    console.log(response);
 }
 //example callback function for getInstrumentTypes

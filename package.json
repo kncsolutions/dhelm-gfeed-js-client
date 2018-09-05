@@ -4,22 +4,16 @@
   "description": "This is a java client for websocket APIs provided by Global Financial Datafeeds LLP",
   "main": "./lib/",
   "scripts": {
-    "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kncsolutions/dhelm-gfeed-js-client.git"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Pallav Nandi Chaudhuri",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/kncsolutions/dhelm-gfeed-js-client/issues"
-  },
-  "homepage": "https://github.com/kncsolutions/dhelm-gfeed-js-client",
+  "license": "APACHE2.0",
   "dependencies": {
-    "ink-docstrap": "^1.3.2",
-    "jsdoc-json": "^2.0.2",
+    "axios": "^0.17.1",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.3",
+    "papaparse": "^4.3.6",
     "ws": "^1.1.1"
   },
   "devDependencies": {

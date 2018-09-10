@@ -39,7 +39,8 @@ var wsclient = new DhelmGfeed({
 });
 ```
 Then run the command **node gfeedclienttest.js**
-
+### API doc
+Read the api doc [here](https://kncsolutions.github.io/site/gfeedjsclient/docs/dhelmgfeedclient/1.0.2/).
 
 If you have any query raise an [issue](https://github.com/kncsolutions/dhelm-gfeed-client/issues) or email at developer@kncsolutions.in.
 To know about dhelm project visit our project website at https://dhelm.kncsolutions.in

@@ -3,20 +3,9 @@ var CONSTANTS = require("./lib/index").CONSTANTS;
 //console.log(((new Date("2012-06-08")).getTime())/1000);
 var wsclient = new DhelmGfeed({
 	api_key: "f31b6d7d-0138-428d-93ef-28acbd9632d2",
-	ws_url: "ws://nimblestream.lisuns.com:4526/"
+  ws_url: "ws://nimblestream.lisuns.com:4526/",
+  synchronization_delay:2000
 });
-//Example without call back
-/*
-wsclient.connect();
-setTimeout(function(){
-  wsclient.getExchanges();
-  setTimeout(function(){
-    //1 . to get exchanges
-    console.log(wsclient.onResponse(1));
-  },3000)
-
-},5000);
-*/
 
 //Example with call back
 wsclient.connect(onconnected);
@@ -48,11 +37,7 @@ function onconnected(isauthenticated){
       expiry:"25OCT2018"
     },show_option_types);
     wsclient.getStrikePrices({
-      exchange: "NFO",
-      instrument_type:"FUTIDX",
-      product: "BANKNIFTY",
-      expiry:"27SEP2018",
-      optiontype:"FF"
+      exchange: "NFO"
     },show_strike_prices);
     wsclient.getLimitation(show_limitation);
     wsclient.getServerInfo(show_server_info);
@@ -62,22 +47,12 @@ function onconnected(isauthenticated){
     wsclient.getExchangeMessage({
       exchange: "NFO"
     },show_exchange_message);
-    wsclient.subscribeRealTime({
-      exchange: "NSE",
-      instrument_identifier:"SBIN"
-    },show_realtime_result);
-    wsclient.subscribeRealTimeSnapshot({
-      exchange: "NSE",
-      instrument_identifier:"SBIN",
-      periodicity:CONSTANTS.MINUTE
-    },show_realtime_snapshot_result);
+   
     wsclient.getInstrumentsOnSearch({
       exchange: "NSE",
       search_word:"SBIN"
     },show_instruments_on_search);
-    wsclient.getInstruments({
-      exchange: "NSE"
-    },show_instruments);
+   
     wsclient.getLastQuote({
       exchange: "NSE",
       instrument_identifier:"SBIN"
@@ -95,28 +70,29 @@ function onconnected(isauthenticated){
     wsclient.getHistoricalTick({
       exchange: "NSE",
       instrument_identifier:"SBIN",
-      from:Math.round(((new Date("2018-08-08").getTime())/1000)),
+      from:Math.round(((new Date("2018-09-06").getTime())/1000)),
       to: Math.round(Date.now()/1000)
     },show_historical_tick);
     wsclient.getHistoricalOHLC({
       exchange: "NSE",
       instrument_identifier:"SBIN",
       periodicity:CONSTANTS.DAY,
-      from:Math.round(((new Date("2018-08-08").getTime())/1000)),
+      from:Math.round(((new Date("2018-09-04").getTime())/1000)),
       to: Math.round(Date.now()/1000)
     },show_historical_ohlc);
-   /* setTimeout(function(){
-    wsclient.getStrikePrices({
-      exchange: "NFO",
-      instrument_type:"FUTIDX",
-      product: "BANKNIFTY",
-      expiry:"27SEP2018",
-      optiontype:"FF"
-    },show_strike_prices)},3000);*/
-  
-    setTimeout(function(){
-      wsclient.getExchanges(showexchanges);
-    },1000);
+     /*wsclient.subscribeRealTime({
+      exchange: "NSE",
+      instrument_identifier:"SBIN"
+    },show_realtime_result);
+    wsclient.subscribeRealTimeSnapshot({
+      exchange: "NSE",
+      instrument_identifier:"SBIN",
+      periodicity:CONSTANTS.MINUTE
+    },show_realtime_snapshot_result);*/
+    /*
+   wsclient.getInstruments({
+      exchange: "NSE"
+    },show_instruments);*/
   }
   
 }

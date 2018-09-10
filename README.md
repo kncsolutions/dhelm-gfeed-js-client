@@ -9,8 +9,18 @@ Using Dhelm-gfeed-js-client you can plug data from web socket api into your web 
 **For detailed integration and usage guidelines, please read through the [wiki](https://github.com/kncsolutions/dhelm-gfeed-js-client/wiki).**
 
 ## How to run the test file
-
-
+Git clone the repository to your pc. Make sure that Node js and NPM is install.
+Naviagate to the folder where package.json is located. Open the command prompt there.
+First run the command **npm install**.
+Open the -**gfeedclienttest.js**- file in your favourite text editor and replace the -**<API_KEY>**- with your api key. Replace the -**<WEB_SOCKET_URL>**- with the websocket url.To run the test file navigate to the folder
+```javascript
+var wsclient = new DhelmGfeed({
+  api_key: "<API_KEY>",
+  ws_url: "<WEB_SOCKET_URL>",
+  synchronization_delay:2000
+});
+```
+Then run the command **node gfeedclienttest.js**
 
 
 If you have any query raise an [issue](https://github.com/kncsolutions/dhelm-gfeed-client/issues) or email at developer@kncsolutions.in.

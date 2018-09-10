@@ -1,6 +1,6 @@
 {
   "name": "dhelmgfeedclient",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "This is a node js client for websocket APIs provided by Global Financial Datafeeds LLP",
   "main": "./lib/",
   "scripts": {

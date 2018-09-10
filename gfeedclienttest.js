@@ -1,9 +1,8 @@
 var DhelmGfeed = require("./lib/index").DhelmGfeed;
 var CONSTANTS = require("./lib/index").CONSTANTS;
-//console.log(((new Date("2012-06-08")).getTime())/1000);
 var wsclient = new DhelmGfeed({
-	api_key: "f31b6d7d-0138-428d-93ef-28acbd9632d2",
-  ws_url: "ws://nimblestream.lisuns.com:4526/",
+	api_key: "<API_KEY>",
+  ws_url: "<WEB_SOCKET_URL>/",
   synchronization_delay:2000
 });
 

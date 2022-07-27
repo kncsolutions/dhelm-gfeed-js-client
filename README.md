@@ -46,3 +46,4 @@ Read the api doc [here](https://kncsolutions.github.io/site/gfeedjsclient/docs/d
 
 If you have any query raise an [issue](https://github.com/kncsolutions/dhelm-gfeed-client/issues)
 
+Developed by Pallav Nandi Chaudhuri.
